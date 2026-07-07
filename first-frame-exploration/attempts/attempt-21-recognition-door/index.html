@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 21 - Recognition Door</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #151514;
+      --ground: #f4efe6;
+      --warm: #d8c8ae;
+      --accent: rgba(47, 100, 91, .24);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, .58), transparent 44%),
+        var(--ground);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 26% 48%, var(--accent) 0 16%, transparent 36%),
+        linear-gradient(180deg, transparent 0 46%, rgba(21, 21, 20, .08) 46% calc(46% + 1px), transparent calc(46% + 1px));
+      content: "";
+      opacity: 0;
+      transform: scale(1.08);
+      animation: remembered 1700ms cubic-bezier(.2, .8, .18, 1) forwards;
+      pointer-events: none;
+    }
+
+    main {
+      position: relative;
+      display: grid;
+      min-height: 100vh;
+      align-items: center;
+      padding: clamp(24px, 7vw, 92px);
+    }
+
+    .primary {
+      max-width: 12.4ch;
+      margin: 0;
+      font-size: clamp(3.2rem, 9.4vw, 9.2rem);
+      font-weight: 430;
+      line-height: .92;
+      letter-spacing: 0;
+      opacity: .88;
+      animation: confirm 1500ms cubic-bezier(.2, .8, .18, 1) 220ms forwards;
+    }
+
+    @keyframes remembered {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes confirm {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 660px) {
+      main {
+        padding: 24px;
+      }
+
+      .primary {
+        max-width: 9.8ch;
+        font-size: clamp(3rem, 15.8vw, 5.9rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before,
+      .primary {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main aria-label="Recognition door first frame">
+    <h1 class="primary">Most people try to change outcomes directly.</h1>
+  </main>
+</body>
+</html>

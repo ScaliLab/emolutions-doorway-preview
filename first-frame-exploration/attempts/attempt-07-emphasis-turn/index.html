@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 07 - Emphasis Turn</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f4ee;
+      --ink: #151514;
+      --muted: #8a8174;
+      --rule: #d7cec0;
+      --accent: #315f5a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    main {
+      display: grid;
+      min-height: 100vh;
+      align-items: center;
+      padding: clamp(18px, 6vw, 76px);
+    }
+
+    .strip {
+      width: min(820px, 100%);
+      margin-left: clamp(0px, 10vw, 140px);
+    }
+
+    .prompt {
+      max-width: 34rem;
+      margin: 0 0 clamp(28px, 7vh, 72px);
+      color: var(--muted);
+      font: .92rem/1.55 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      opacity: 0;
+      animation: prompt-in 700ms ease 160ms forwards;
+    }
+
+    .line {
+      position: relative;
+      max-width: 39rem;
+      margin: 0;
+      padding: 18px 0 20px;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      font-size: clamp(1.65rem, 4.2vw, 3.35rem);
+      font-weight: 430;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .line span {
+      opacity: 0;
+      animation: word-in 520ms ease forwards;
+    }
+
+    .line span:nth-child(2) {
+      animation-delay: 280ms;
+    }
+
+    .line span:nth-child(3) {
+      animation-delay: 560ms;
+    }
+
+    .line span:nth-child(4) {
+      animation-delay: 840ms;
+    }
+
+    .line .turn {
+      position: relative;
+      animation-delay: 1420ms;
+    }
+
+    .line .turn::after {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -.08em;
+      height: .12em;
+      background: rgba(49, 95, 90, .26);
+      content: "";
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: underline-turn 900ms cubic-bezier(.2, .8, .18, 1) 1850ms forwards;
+    }
+
+    .after {
+      max-width: 22rem;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font: .9rem/1.5 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      opacity: 0;
+      animation: after-in 720ms ease 2550ms forwards;
+    }
+
+    @keyframes prompt-in {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes word-in {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes underline-turn {
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    @keyframes after-in {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 660px) {
+      main {
+        align-items: start;
+        padding: 82px 22px 28px;
+      }
+
+      .strip {
+        margin-left: 0;
+      }
+
+      .prompt {
+        margin-bottom: 44px;
+      }
+
+      .line {
+        max-width: 18rem;
+        font-size: clamp(1.72rem, 8.4vw, 2.45rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .prompt,
+      .line span,
+      .after {
+        opacity: 1;
+        animation: none;
+      }
+
+      .line .turn::after {
+        transform: scaleX(1);
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="strip" aria-label="First line arriving through emphasis">
+      <p class="prompt">The part people usually notice is not always the part doing the work.</p>
+      <p class="line">
+        <span>Most people</span>
+        <span>try to change</span>
+        <span>outcomes</span>
+        <span class="turn">directly.</span>
+      </p>
+      <p class="after">There it is.</p>
+    </section>
+  </main>
+</body>
+</html>

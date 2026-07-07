@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 03 - Delayed Response</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f6f3ec;
+      --ink: #151514;
+      --muted: #67615a;
+      --upstream: rgba(49, 95, 90, .42);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    .response-field {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      animation: field-answers 1900ms cubic-bezier(.22, .7, .22, 1) 3250ms forwards;
+    }
+
+    .response-field span {
+      position: absolute;
+      right: 12vw;
+      bottom: 13vh;
+      width: min(46vw, 560px);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--upstream), transparent);
+      transform-origin: right center;
+      animation: current 2600ms cubic-bezier(.2, .8, .2, 1) 3250ms both;
+    }
+
+    .response-field span:nth-child(2) {
+      right: 18vw;
+      bottom: 19vh;
+      width: min(40vw, 480px);
+      animation-delay: 3450ms;
+    }
+
+    .response-field span:nth-child(3) {
+      right: 22vw;
+      bottom: 25vh;
+      width: min(34vw, 400px);
+      animation-delay: 3650ms;
+    }
+
+    main {
+      display: grid;
+      min-height: 100vh;
+      align-content: center;
+      padding: clamp(24px, 7vw, 84px);
+    }
+
+    .copy {
+      width: min(780px, 92vw);
+      margin-left: clamp(0px, 8vw, 112px);
+    }
+
+    h1 {
+      width: min(13ch, 88vw);
+      margin: 0;
+      opacity: 0;
+      transform: translateY(6px);
+      font-size: clamp(3rem, 9.2vw, 8.2rem);
+      font-weight: 410;
+      line-height: .94;
+      letter-spacing: 0;
+      animation: line-first 1050ms cubic-bezier(.2, .8, .18, 1) 280ms forwards;
+    }
+
+    p {
+      max-width: 17rem;
+      margin: 34px 0 0;
+      opacity: 0;
+      transform: translateY(8px);
+      color: var(--muted);
+      font: 1.18rem/1.35 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      animation: bridge-arrives 1200ms cubic-bezier(.2, .8, .18, 1) 4050ms forwards;
+    }
+
+    @keyframes line-first {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes field-answers {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes current {
+      from {
+        opacity: 0;
+        transform: translate(60px, 24px) rotate(-8deg) scaleX(.32);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(-18px, -18px) rotate(-8deg) scaleX(1);
+      }
+    }
+
+    @keyframes bridge-arrives {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 620px) {
+      main {
+        align-content: center;
+      }
+
+      .copy {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      h1 {
+        width: min(11ch, 92vw);
+        font-size: clamp(3rem, 17vw, 5.9rem);
+      }
+
+      p {
+        max-width: 14rem;
+        margin-top: 28px;
+        font-size: 1.02rem;
+      }
+
+      .response-field span {
+        right: 0;
+        bottom: 12vh;
+        width: 80vw;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .response-field,
+      .response-field span,
+      h1,
+      p {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="response-field" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <main>
+    <div class="copy">
+      <h1>Most people try to change outcomes directly.</h1>
+      <p>EMOLUTIONS works upstream.</p>
+    </div>
+  </main>
+</body>
+</html>

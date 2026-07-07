@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 23 - Curiosity Door</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f8f1e7;
+      --ground: #0f1a22;
+      --blue: #1f5d7a;
+      --green: #6fb08d;
+      --line: rgba(248, 241, 231, .18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 82% 24%, rgba(111, 176, 141, .38), transparent 24%),
+        linear-gradient(130deg, #0c1118, var(--ground) 58%, #123247);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    body::before {
+      position: fixed;
+      right: clamp(22px, 9vw, 118px);
+      bottom: clamp(28px, 10vh, 104px);
+      width: min(34vw, 360px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--line), transparent);
+      content: "";
+      transform: scaleX(.16);
+      transform-origin: left;
+      animation: open-loop 1700ms cubic-bezier(.2, .8, .18, 1) 900ms forwards;
+      pointer-events: none;
+    }
+
+    main {
+      display: grid;
+      min-height: 100vh;
+      align-items: center;
+      padding: clamp(24px, 7vw, 92px);
+    }
+
+    .primary {
+      max-width: 12.5ch;
+      margin: 0;
+      font-size: clamp(3.1rem, 9.2vw, 9rem);
+      font-weight: 430;
+      line-height: .92;
+      letter-spacing: 0;
+    }
+
+    @keyframes open-loop {
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    @media (max-width: 660px) {
+      main {
+        padding: 24px;
+      }
+
+      .primary {
+        max-width: 9.8ch;
+        font-size: clamp(3rem, 15.6vw, 5.9rem);
+      }
+
+      body::before {
+        right: 24px;
+        bottom: 112px;
+        width: 42vw;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before {
+        transform: scaleX(1);
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main aria-label="Curiosity door first frame">
+    <h1 class="primary">Most people try to change outcomes directly.</h1>
+  </main>
+</body>
+</html>

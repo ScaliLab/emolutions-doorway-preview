@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 12 - Tilted Room</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --wall: #2f2721;
+      --floor: #11100f;
+      --side: #5b3a33;
+      --chalk: #f2e8d5;
+      --signal: #64b39b;
+      --rust: #c76a3d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--floor);
+      color: var(--chalk);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    main {
+      position: relative;
+      min-height: 100vh;
+      perspective: 900px;
+      background:
+        linear-gradient(125deg, transparent 0 42%, rgba(100, 179, 155, .16) 42% 43%, transparent 43%),
+        var(--floor);
+    }
+
+    .wall {
+      position: absolute;
+      inset: 0 0 24vh 24vw;
+      background:
+        linear-gradient(90deg, rgba(242, 232, 213, .08), transparent 28%),
+        repeating-linear-gradient(0deg, rgba(242, 232, 213, .05) 0 1px, transparent 1px 64px),
+        var(--wall);
+      transform: rotateY(-13deg) rotateZ(.8deg);
+      transform-origin: left center;
+      box-shadow: -26px 0 70px rgba(0, 0, 0, .28);
+    }
+
+    .side {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 28vw;
+      background:
+        linear-gradient(180deg, rgba(199, 106, 61, .22), transparent 46%),
+        var(--side);
+    }
+
+    .floor {
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 31vh;
+      background:
+        linear-gradient(160deg, rgba(242, 232, 213, .05), transparent 40%),
+        #151312;
+      transform: skewX(-18deg);
+      transform-origin: bottom left;
+    }
+
+    .trace {
+      position: absolute;
+      left: 18vw;
+      top: 18vh;
+      width: 1px;
+      height: 58vh;
+      background: linear-gradient(180deg, transparent, rgba(242, 232, 213, .38), transparent);
+      opacity: 0;
+      animation: side-light 900ms ease 360ms forwards;
+    }
+
+    .primary-panel {
+      position: absolute;
+      left: clamp(110px, 34vw, 440px);
+      top: clamp(116px, 31vh, 260px);
+      width: min(470px, 48vw);
+      opacity: 0;
+      transform: rotate(-1deg) translateX(-18px);
+      animation: seen-on-wall 1100ms cubic-bezier(.2, .8, .18, 1) 1000ms forwards;
+    }
+
+    .primary-panel::before {
+      display: block;
+      width: 4.6rem;
+      height: 2px;
+      margin-bottom: 24px;
+      background: var(--signal);
+      content: "";
+      box-shadow: 0 0 18px rgba(100, 179, 155, .58);
+    }
+
+    .primary {
+      margin: 0;
+      color: var(--chalk);
+      font-size: clamp(1.7rem, 4vw, 3.25rem);
+      font-weight: 430;
+      line-height: 1.08;
+      letter-spacing: 0;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, .45);
+    }
+
+    .floor-note {
+      position: absolute;
+      right: clamp(18px, 8vw, 100px);
+      bottom: clamp(18px, 8vh, 72px);
+      max-width: 13rem;
+      color: rgba(242, 232, 213, .52);
+      font: .78rem/1.4 ui-sans-serif, system-ui, sans-serif;
+      opacity: 0;
+      animation: note 800ms ease 2300ms forwards;
+    }
+
+    @keyframes side-light {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes seen-on-wall {
+      to {
+        opacity: 1;
+        transform: rotate(-1deg) translateX(0);
+      }
+    }
+
+    @keyframes note {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 660px) {
+      .wall {
+        inset: 0 0 30vh 70px;
+        transform: rotateY(-9deg) rotateZ(.6deg);
+      }
+
+      .side {
+        width: 92px;
+      }
+
+      .trace {
+        left: 72px;
+        top: 12vh;
+        height: 58vh;
+      }
+
+      .primary-panel {
+        left: 108px;
+        top: 190px;
+        width: min(240px, calc(100vw - 126px));
+      }
+
+      .primary {
+        font-size: clamp(1.45rem, 7.2vw, 2.12rem);
+      }
+
+      .floor-note {
+        left: 108px;
+        right: 18px;
+        bottom: 48px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .trace,
+      .primary-panel,
+      .floor-note {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="side" aria-hidden="true"></div>
+    <div class="wall" aria-hidden="true"></div>
+    <div class="floor" aria-hidden="true"></div>
+    <div class="trace" aria-hidden="true"></div>
+    <section class="primary-panel" aria-label="Recognition on a tilted wall">
+      <p class="primary">Most people try to change outcomes directly.</p>
+    </section>
+    <p class="floor-note">not centered. not calm. still received.</p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 01 - Typographic Stillness</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f4ed;
+      --ink: #151514;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    main {
+      display: grid;
+      min-height: 100vh;
+      place-items: center;
+      padding: clamp(24px, 6vw, 72px);
+    }
+
+    h1 {
+      width: min(13ch, 88vw);
+      margin: 0;
+      opacity: 0;
+      transform: translateY(10px);
+      font-size: clamp(3.2rem, 11vw, 9.5rem);
+      font-weight: 410;
+      line-height: .92;
+      letter-spacing: 0;
+      animation: line-arrives 1800ms cubic-bezier(.2, .8, .2, 1) 620ms forwards;
+    }
+
+    @keyframes line-arrives {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 620px) {
+      main {
+        place-items: center start;
+      }
+
+      h1 {
+        width: min(11ch, 92vw);
+        font-size: clamp(3.15rem, 18vw, 6rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      h1 {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Most people try to change outcomes directly.</h1>
+  </main>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 05 - Margin Annotation</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f5ee;
+      --ink: #171615;
+      --quiet: #8d8478;
+      --rule: #d8d1c4;
+      --mark: #315f5a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, transparent 0 17vw, rgba(23, 22, 21, .08) 17vw calc(17vw + 1px), transparent calc(17vw + 1px)),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    main {
+      display: grid;
+      min-height: 100vh;
+      grid-template-columns: minmax(82px, 17vw) minmax(0, 1fr);
+      padding: clamp(18px, 4vw, 48px);
+    }
+
+    .margin {
+      align-self: start;
+      padding-top: clamp(32px, 11vh, 100px);
+      color: var(--quiet);
+      font: .72rem/1.2 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      opacity: 0;
+      animation: margin-arrives 700ms ease 180ms forwards;
+    }
+
+    .page {
+      position: relative;
+      align-self: center;
+      max-width: 620px;
+      min-height: 56vh;
+      padding: clamp(18px, 4vw, 44px) clamp(20px, 5vw, 62px);
+      border-left: 1px solid var(--rule);
+    }
+
+    .quiet-lines {
+      max-width: 34ch;
+      margin: 0 0 12vh;
+      color: rgba(23, 22, 21, .18);
+      font-size: clamp(1rem, 2.4vw, 1.55rem);
+      line-height: 1.55;
+    }
+
+    .quiet-lines span {
+      display: block;
+      opacity: 0;
+      transform: translateY(4px);
+      animation: ghost-note 700ms ease forwards;
+    }
+
+    .quiet-lines span:nth-child(2) {
+      animation-delay: 260ms;
+    }
+
+    .quiet-lines span:nth-child(3) {
+      animation-delay: 520ms;
+    }
+
+    .primary {
+      max-width: 24rem;
+      margin: 0;
+      opacity: 0;
+      transform: translateX(-12px);
+      font-size: clamp(1.45rem, 3vw, 2.35rem);
+      font-weight: 430;
+      line-height: 1.12;
+      letter-spacing: 0;
+      animation: annotation 1250ms cubic-bezier(.2, .8, .18, 1) 1180ms forwards;
+    }
+
+    .primary::before {
+      display: block;
+      width: 3.4rem;
+      height: 1px;
+      margin: 0 0 18px;
+      background: var(--mark);
+      content: "";
+      transform: scaleX(.2);
+      transform-origin: left;
+      animation: rule-opens 900ms cubic-bezier(.2, .8, .18, 1) 1050ms forwards;
+    }
+
+    @keyframes margin-arrives {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes ghost-note {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes annotation {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes rule-opens {
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    @media (max-width: 660px) {
+      body {
+        background:
+          linear-gradient(90deg, transparent 0 72px, rgba(23, 22, 21, .08) 72px 73px, transparent 73px),
+          var(--paper);
+      }
+
+      main {
+        grid-template-columns: 62px minmax(0, 1fr);
+        padding: 18px 16px;
+      }
+
+      .margin {
+        padding-top: 72px;
+        writing-mode: vertical-rl;
+      }
+
+      .page {
+        min-height: 62vh;
+        padding: 38px 8px 38px 22px;
+      }
+
+      .quiet-lines {
+        margin-bottom: 10vh;
+        font-size: 1rem;
+      }
+
+      .primary {
+        max-width: 16rem;
+        font-size: clamp(1.55rem, 7.2vw, 2.15rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .margin,
+      .quiet-lines span,
+      .primary,
+      .primary::before {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="margin">noted</div>
+    <section class="page" aria-label="First recognition annotation">
+      <p class="quiet-lines" aria-hidden="true">
+        <span>fix the result</span>
+        <span>tighten the plan</span>
+        <span>push harder</span>
+      </p>
+      <p class="primary">Most people try to change outcomes directly.</p>
+    </section>
+  </main>
+</body>
+</html>

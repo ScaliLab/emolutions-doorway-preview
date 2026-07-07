@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 02 - Receiving Field</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f1e8;
+      --ink: #171615;
+      --field: rgba(49, 95, 90, .16);
+      --warm: rgba(188, 152, 96, .2);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    body::before,
+    body::after {
+      position: fixed;
+      inset: -18vmax;
+      z-index: 0;
+      content: "";
+      pointer-events: none;
+    }
+
+    body::before {
+      background:
+        radial-gradient(circle at 45% 46%, rgba(255, 255, 255, .92) 0 12%, transparent 34%),
+        radial-gradient(circle at 50% 52%, var(--field) 0 19%, transparent 44%),
+        radial-gradient(circle at 54% 50%, var(--warm) 0 8%, transparent 32%);
+      filter: blur(4px);
+      opacity: .78;
+      transform: scale(.92);
+      animation: receive 4200ms cubic-bezier(.25, .75, .2, 1) forwards;
+    }
+
+    body::after {
+      background:
+        linear-gradient(90deg, rgba(21, 21, 20, .035), transparent 18% 82%, rgba(21, 21, 20, .035)),
+        linear-gradient(180deg, rgba(21, 21, 20, .05), transparent 26% 72%, rgba(21, 21, 20, .04));
+      opacity: .36;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      min-height: 100vh;
+      place-items: center;
+      padding: clamp(24px, 7vw, 84px);
+    }
+
+    h1 {
+      width: min(14ch, 86vw);
+      margin: 0;
+      opacity: 0;
+      transform: translateY(14px);
+      font-size: clamp(3rem, 9.8vw, 8.4rem);
+      font-weight: 410;
+      line-height: .94;
+      letter-spacing: 0;
+      animation: line-lands 1500ms cubic-bezier(.2, .8, .18, 1) 1450ms forwards;
+    }
+
+    @keyframes receive {
+      58% {
+        transform: scale(1);
+        opacity: .86;
+      }
+
+      100% {
+        transform: scale(1.025);
+        opacity: .74;
+      }
+    }
+
+    @keyframes line-lands {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 620px) {
+      main {
+        place-items: center start;
+      }
+
+      h1 {
+        width: min(11ch, 92vw);
+        font-size: clamp(3.05rem, 17vw, 5.8rem);
+      }
+
+      body::before {
+        background:
+          radial-gradient(circle at 34% 50%, rgba(255, 255, 255, .92) 0 14%, transparent 38%),
+          radial-gradient(circle at 42% 54%, var(--field) 0 22%, transparent 48%),
+          radial-gradient(circle at 52% 50%, var(--warm) 0 10%, transparent 34%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before,
+      h1 {
+        transform: none;
+        animation: none;
+      }
+
+      h1 {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Most people try to change outcomes directly.</h1>
+  </main>
+</body>
+</html>

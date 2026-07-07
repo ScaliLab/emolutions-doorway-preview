@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 13 - Already There</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f6ead8;
+      --ground: #181313;
+      --warm: #743629;
+      --quiet: rgba(246, 234, 216, .6);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 30% 46%, rgba(116, 54, 41, .72), transparent 36%),
+        linear-gradient(110deg, #241716, var(--ground) 68%);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    main {
+      display: grid;
+      min-height: 100vh;
+      align-items: center;
+      padding: clamp(22px, 7vw, 92px);
+    }
+
+    .copy {
+      max-width: min(920px, 92vw);
+    }
+
+    .primary {
+      max-width: 13ch;
+      margin: 0;
+      font-size: clamp(3.4rem, 10.8vw, 10.2rem);
+      font-weight: 430;
+      line-height: .91;
+      letter-spacing: 0;
+    }
+
+    .quiet {
+      width: min(23rem, 90vw);
+      margin: clamp(32px, 6vh, 54px) 0 0;
+      color: var(--quiet);
+      font: 1rem/1.5 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      opacity: 0;
+      animation: after 900ms ease 1900ms forwards;
+    }
+
+    body::after {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 32% 48%, transparent 0 31%, rgba(0, 0, 0, .32) 64%);
+      content: "";
+      pointer-events: none;
+      opacity: 0;
+      animation: attention 1400ms ease 260ms forwards;
+    }
+
+    @keyframes attention {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes after {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      main {
+        align-items: center;
+        padding: 24px;
+      }
+
+      .primary {
+        max-width: 9.8ch;
+        font-size: clamp(3.1rem, 17vw, 6.2rem);
+      }
+
+      .quiet {
+        font-size: .95rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::after,
+      .quiet {
+        opacity: 1;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="copy" aria-label="First recognition">
+      <h1 class="primary">Most people try to change outcomes directly.</h1>
+      <p class="quiet">Stay with that for a moment.</p>
+    </section>
+  </main>
+</body>
+</html>

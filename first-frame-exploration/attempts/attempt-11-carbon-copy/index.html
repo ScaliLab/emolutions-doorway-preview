@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 11 - Carbon Copy</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --desk: #2a211f;
+      --sheet: #f7e9b0;
+      --copy: #243d83;
+      --pink: #df6c86;
+      --ink: #181616;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 74% 16%, rgba(223, 108, 134, .32), transparent 20%),
+        linear-gradient(145deg, #2a211f, #161312);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    main {
+      position: relative;
+      min-height: 100vh;
+      padding: clamp(18px, 5vw, 64px);
+    }
+
+    .sheet {
+      position: absolute;
+      left: clamp(26px, 12vw, 170px);
+      top: clamp(62px, 15vh, 130px);
+      width: min(560px, 72vw);
+      min-height: min(560px, 68vh);
+      padding: clamp(24px, 5vw, 54px);
+      border: 1px solid rgba(42, 33, 31, .35);
+      background:
+        repeating-linear-gradient(0deg, transparent 0 35px, rgba(36, 61, 131, .14) 35px 36px),
+        var(--sheet);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, .42);
+      transform: rotate(-2deg);
+    }
+
+    .copy-shadow {
+      position: absolute;
+      right: clamp(18px, 11vw, 150px);
+      bottom: clamp(36px, 11vh, 110px);
+      width: min(460px, 58vw);
+      min-height: min(360px, 46vh);
+      border: 1px solid rgba(247, 233, 176, .24);
+      background: rgba(36, 61, 131, .78);
+      box-shadow: 0 20px 54px rgba(0, 0, 0, .34);
+      transform: rotate(3deg);
+      opacity: 0;
+      animation: carbon-visible 900ms ease 420ms forwards;
+    }
+
+    .stamps {
+      display: grid;
+      max-width: 290px;
+      gap: 12px;
+      color: rgba(36, 61, 131, .68);
+      font: 700 .74rem/1.2 ui-sans-serif, system-ui, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .stamps span {
+      opacity: 0;
+      transform: translateX(-10px);
+      animation: stamp 420ms ease forwards;
+    }
+
+    .stamps span:nth-child(2) {
+      animation-delay: 260ms;
+    }
+
+    .stamps span:nth-child(3) {
+      animation-delay: 520ms;
+    }
+
+    .primary {
+      position: absolute;
+      left: clamp(24px, 5vw, 54px);
+      right: clamp(24px, 5vw, 54px);
+      bottom: clamp(42px, 9vh, 86px);
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(1.7rem, 3.8vw, 3.15rem);
+      font-weight: 430;
+      line-height: 1.08;
+      letter-spacing: 0;
+      opacity: 0;
+      text-shadow: 2px 2px 0 rgba(36, 61, 131, .18);
+      transform: translate(10px, 8px);
+      animation: pressure-copy 1150ms cubic-bezier(.2, .8, .18, 1) 1020ms forwards;
+    }
+
+    .primary::after {
+      display: block;
+      width: 6rem;
+      height: 10px;
+      margin-top: 28px;
+      background: var(--pink);
+      content: "";
+      opacity: .78;
+      transform: scaleX(.2);
+      transform-origin: left;
+      animation: swipe 780ms cubic-bezier(.2, .8, .18, 1) 1850ms forwards;
+    }
+
+    @keyframes carbon-visible {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes stamp {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes pressure-copy {
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    @keyframes swipe {
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    @media (max-width: 660px) {
+      .sheet {
+        left: 20px;
+        top: 86px;
+        width: calc(100vw - 40px);
+        min-height: 500px;
+        transform: rotate(-1deg);
+      }
+
+      .copy-shadow {
+        right: -90px;
+        bottom: 44px;
+        width: 330px;
+        min-height: 250px;
+      }
+
+      .primary {
+        font-size: clamp(1.55rem, 7.5vw, 2.2rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .copy-shadow,
+      .stamps span,
+      .primary,
+      .primary::after {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="copy-shadow" aria-hidden="true"></div>
+    <section class="sheet" aria-label="Carbon copy recognition">
+      <div class="stamps" aria-hidden="true">
+        <span>visible correction</span>
+        <span>visible pressure</span>
+        <span>visible result</span>
+      </div>
+      <p class="primary">Most people try to change outcomes directly.</p>
+    </section>
+  </main>
+</body>
+</html>

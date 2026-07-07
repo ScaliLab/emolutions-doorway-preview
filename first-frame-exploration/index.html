@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EMOLUTIONS First Frame Attempts</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #151514;
+      --muted: #68635d;
+      --paper: #f8f6f1;
+      --line: #d8d2c7;
+      --accent: #315f5a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    main {
+      width: min(1080px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 56px 0 72px;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0 0 18px;
+      font-size: clamp(2.1rem, 4.4vw, 5rem);
+      line-height: .98;
+      font-weight: 430;
+      letter-spacing: 0;
+    }
+
+    .intro {
+      max-width: 680px;
+      margin: 0 0 44px;
+      color: var(--muted);
+      font: 1rem/1.6 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    a {
+      display: flex;
+      min-height: 250px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: inherit;
+      text-decoration: none;
+      background: rgba(255, 255, 255, .32);
+      transition: border-color 160ms ease, transform 160ms ease;
+    }
+
+    a:hover,
+    a:focus-visible {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .kicker {
+      color: var(--accent);
+      font: 700 .72rem/1.2 ui-sans-serif, system-ui, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    h2 {
+      margin: 18px 0 10px;
+      font-size: clamp(1.45rem, 2.4vw, 2.2rem);
+      line-height: 1.04;
+      font-weight: 430;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font: .96rem/1.55 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .behaviour {
+      margin-top: 28px;
+      color: var(--ink);
+    }
+
+    @media (max-width: 720px) {
+      main {
+        width: min(100% - 24px, 520px);
+        padding-top: 36px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      a {
+        min-height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Twenty-eight first-appearance directions</h1>
+    <p class="intro">Each attempt holds to the same threshold line while changing the behaviour around it. Attempts 25-28 test perceptual demonstration: the frame makes noticing shift before explanation.</p>
+    <section class="grid" aria-label="First-frame attempts">
+      <a href="attempts/attempt-01-typographic-stillness/index.html">
+        <span>
+          <span class="kicker">Attempt 01</span>
+          <h2>Typographic stillness</h2>
+          <p>The page gives the line almost nothing to lean on except timing, scale, and quiet.</p>
+        </span>
+        <p class="behaviour">Behaviour: blank arrival, delayed line, protected silence.</p>
+      </a>
+
+      <a href="attempts/attempt-02-receiving-field/index.html">
+        <span>
+          <span class="kicker">Attempt 02</span>
+          <h2>Receiving field</h2>
+          <p>A subtle field begins first, as if the page has already made room for the visitor.</p>
+        </span>
+        <p class="behaviour">Behaviour: field first, line second, no bridge.</p>
+      </a>
+
+      <a href="attempts/attempt-03-delayed-response/index.html">
+        <span>
+          <span class="kicker">Attempt 03</span>
+          <h2>Delayed response</h2>
+          <p>The line lands before anything else is allowed to answer it.</p>
+        </span>
+        <p class="behaviour">Behaviour: line first, pause, then upstream response.</p>
+      </a>
+
+      <a href="attempts/attempt-04-pressure-notation/index.html">
+        <span>
+          <span class="kicker">Attempt 04</span>
+          <h2>Pressure notation</h2>
+          <p>A non-dot, non-network representation lets pressure release around the sentence.</p>
+        </span>
+        <p class="behaviour">Behaviour: compression, recognition line, slight release.</p>
+      </a>
+
+      <a href="attempts/attempt-05-margin-annotation/index.html">
+        <span>
+          <span class="kicker">Attempt 05</span>
+          <h2>Margin annotation</h2>
+          <p>The line behaves like a note in the margin, found beside familiar direct moves.</p>
+        </span>
+        <p class="behaviour">Behaviour: faint actions, margin rule, annotation lands.</p>
+      </a>
+
+      <a href="attempts/attempt-06-direct-move-ledger/index.html">
+        <span>
+          <span class="kicker">Attempt 06</span>
+          <h2>Direct move ledger</h2>
+          <p>The visitor sees repeated direct attempts first, then the sentence names the pattern.</p>
+        </span>
+        <p class="behaviour">Behaviour: ledger rows accrue, pattern sentence appears.</p>
+      </a>
+
+      <a href="attempts/attempt-07-emphasis-turn/index.html">
+        <span>
+          <span class="kicker">Attempt 07</span>
+          <h2>Emphasis turn</h2>
+          <p>The sentence arrives in parts, with recognition concentrated in the word directly.</p>
+        </span>
+        <p class="behaviour">Behaviour: small pre-line, phrase assembly, final word turns.</p>
+      </a>
+
+      <a href="attempts/attempt-08-threshold-card/index.html">
+        <span>
+          <span class="kicker">Attempt 08</span>
+          <h2>Threshold card</h2>
+          <p>The line is placed as an object left near an edge, not as a screen-sized claim.</p>
+        </span>
+        <p class="behaviour">Behaviour: threshold edge, card enters, sentence settles.</p>
+      </a>
+
+      <a href="attempts/attempt-09-low-light-bench/index.html">
+        <span>
+          <span class="kicker">Attempt 09</span>
+          <h2>Low light bench</h2>
+          <p>The line appears as an observed readout in a dark workbench condition.</p>
+        </span>
+        <p class="behaviour">Behaviour: meters wake, material tag lights, needle settles.</p>
+      </a>
+
+      <a href="attempts/attempt-10-impact-seam/index.html">
+        <span>
+          <span class="kicker">Attempt 10</span>
+          <h2>Impact seam</h2>
+          <p>Direct outcome blocks hit a hard seam; the sentence appears after impact.</p>
+        </span>
+        <p class="behaviour">Behaviour: saturated collision, seam holds, recognition follows.</p>
+      </a>
+
+      <a href="attempts/attempt-11-carbon-copy/index.html">
+        <span>
+          <span class="kicker">Attempt 11</span>
+          <h2>Carbon copy</h2>
+          <p>The line transfers through pressure, like a pattern copied onto material.</p>
+        </span>
+        <p class="behaviour">Behaviour: stamped traces, carbon layer, sentence presses through.</p>
+      </a>
+
+      <a href="attempts/attempt-12-tilted-room/index.html">
+        <span>
+          <span class="kicker">Attempt 12</span>
+          <h2>Tilted room</h2>
+          <p>The line is seen on a dark angled wall, received through spatial tension.</p>
+        </span>
+        <p class="behaviour">Behaviour: side light, tilted surface, off-axis recognition.</p>
+      </a>
+
+      <a href="attempts/attempt-13-already-there/index.html">
+        <span>
+          <span class="kicker">Attempt 13</span>
+          <h2>Already there</h2>
+          <p>The line is present immediately; the background only narrows attention around it.</p>
+        </span>
+        <p class="behaviour">Behaviour: instant line, peripheral attention, protected pause.</p>
+      </a>
+
+      <a href="attempts/attempt-14-plain-spoken/index.html">
+        <span>
+          <span class="kicker">Attempt 14</span>
+          <h2>Plain spoken</h2>
+          <p>The line arrives like a sentence being said, with no symbolic visual system to decode.</p>
+        </span>
+        <p class="behaviour">Behaviour: phrase cadence, bold colour, direct emphasis.</p>
+      </a>
+
+      <a href="attempts/attempt-15-attention-draws-in/index.html">
+        <span>
+          <span class="kicker">Attempt 15</span>
+          <h2>Attention draws in</h2>
+          <p>The background gathers attention toward readable text instead of becoming a subject.</p>
+        </span>
+        <p class="behaviour">Behaviour: focus draws inward, line clears, pause line holds.</p>
+      </a>
+
+      <a href="attempts/attempt-16-after-the-pause/index.html">
+        <span>
+          <span class="kicker">Attempt 16</span>
+          <h2>After the pause</h2>
+          <p>A recognisable human pause precedes the line; the frame asks for recognition only.</p>
+        </span>
+        <p class="behaviour">Behaviour: small cue, line lands, delayed permission to pause.</p>
+      </a>
+
+      <a href="attempts/attempt-17-arrival-context/index.html">
+        <span>
+          <span class="kicker">Attempt 17</span>
+          <h2>Arrival context</h2>
+          <p>The screen receives the visitor's likely state before placing the line beside it.</p>
+        </span>
+        <p class="behaviour">Solution type: arrival context, not line animation.</p>
+      </a>
+
+      <a href="attempts/attempt-18-familiar-move-choice/index.html">
+        <span>
+          <span class="kicker">Attempt 18</span>
+          <h2>Familiar move choice</h2>
+          <p>A small optional choice lets the visitor recognise the pattern through their own move.</p>
+        </span>
+        <p class="behaviour">Solution type: recognition by self-selection.</p>
+      </a>
+
+      <a href="attempts/attempt-19-outcomes-first/index.html">
+        <span>
+          <span class="kicker">Attempt 19</span>
+          <h2>Outcomes first</h2>
+          <p>The visible word outcomes gets first contact; the line names the habit around it.</p>
+        </span>
+        <p class="behaviour">Solution type: word priority and screen-space relation.</p>
+      </a>
+
+      <a href="attempts/attempt-20-conversation-turn/index.html">
+        <span>
+          <span class="kicker">Attempt 20</span>
+          <h2>Conversation turn</h2>
+          <p>A plain human observation turns into the protected line without a visual puzzle.</p>
+        </span>
+        <p class="behaviour">Solution type: conversational recognition.</p>
+      </a>
+
+      <a href="attempts/attempt-21-recognition-door/index.html">
+        <span>
+          <span class="kicker">Attempt 21</span>
+          <h2>Recognition door</h2>
+          <p>The visitor clicked because the line already felt true; the frame calmly confirms it.</p>
+        </span>
+        <p class="behaviour">Door type: recognition. Behaviour: calm confirmation.</p>
+      </a>
+
+      <a href="attempts/attempt-22-friction-door/index.html">
+        <span>
+          <span class="kicker">Attempt 22</span>
+          <h2>Friction door</h2>
+          <p>The visitor clicked because direct effort keeps meeting resistance before the outcome.</p>
+        </span>
+        <p class="behaviour">Door type: friction. Behaviour: resistance resolves into line.</p>
+      </a>
+
+      <a href="attempts/attempt-23-curiosity-door/index.html">
+        <span>
+          <span class="kicker">Attempt 23</span>
+          <h2>Curiosity door</h2>
+          <p>The visitor clicked because "upstream" was interesting but not yet understood.</p>
+        </span>
+        <p class="behaviour">Door type: curiosity. Behaviour: open loop, one step further.</p>
+      </a>
+
+      <a href="attempts/attempt-24-practical-problem-door/index.html">
+        <span>
+          <span class="kicker">Attempt 24</span>
+          <h2>Practical problem door</h2>
+          <p>The visitor clicked because the pattern may apply to a real design or communication problem.</p>
+        </span>
+        <p class="behaviour">Door type: practical relevance. Behaviour: line as usable lens.</p>
+      </a>
+
+      <a href="attempts/attempt-25-misread-first/index.html">
+        <span>
+          <span class="kicker">Attempt 25</span>
+          <h2>Misread first</h2>
+          <p>The visitor first reads the situation one way, then sees that perception was shaped.</p>
+        </span>
+        <p class="behaviour">Demonstration: first perception shifts, then second beat resolves.</p>
+      </a>
+
+      <a href="attempts/attempt-26-attention-redirected/index.html">
+        <span>
+          <span class="kicker">Attempt 26</span>
+          <h2>Attention redirected</h2>
+          <p>A louder visible pull yields to an earlier source of attention.</p>
+        </span>
+        <p class="behaviour">Demonstration: attention moves from outcome pull to upstream source.</p>
+      </a>
+
+      <a href="attempts/attempt-27-outcome-cause/index.html">
+        <span>
+          <span class="kicker">Attempt 27</span>
+          <h2>Outcome visible</h2>
+          <p>An obvious outcome appears first; an earlier shaping point becomes visible after it.</p>
+        </span>
+        <p class="behaviour">Demonstration: outcome first, earlier cause revealed.</p>
+      </a>
+
+      <a href="attempts/attempt-28-available-unavailable/index.html">
+        <span>
+          <span class="kicker">Attempt 28</span>
+          <h2>Available / unavailable</h2>
+          <p>The frame changes what action feels possible before the second line resolves it.</p>
+        </span>
+        <p class="behaviour">Demonstration: closed state opens into upstream shift.</p>
+      </a>
+    </section>
+  </main>
+</body>
+</html>

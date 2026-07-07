@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 19 - Outcomes First</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #121211;
+      --muted: #5f5750;
+      --ground: #f4efe7;
+      --loud: #e06f4f;
+      --cool: #2f645b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--ground);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    main {
+      position: relative;
+      min-height: 100vh;
+      padding: clamp(22px, 7vw, 96px);
+    }
+
+    .loud-word {
+      position: absolute;
+      top: clamp(26px, 8vh, 88px);
+      right: clamp(-240px, -10vw, -80px);
+      margin: 0;
+      color: var(--loud);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: clamp(7rem, 20vw, 18rem);
+      font-weight: 800;
+      line-height: .8;
+      letter-spacing: 0;
+      opacity: .95;
+      user-select: none;
+    }
+
+    .copy {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      min-height: calc(100vh - clamp(44px, 14vw, 192px));
+      align-content: end;
+      max-width: 760px;
+    }
+
+    .primary {
+      max-width: 12.8ch;
+      margin: 0;
+      font-size: clamp(3.1rem, 8.6vw, 8.6rem);
+      font-weight: 430;
+      line-height: .92;
+      letter-spacing: 0;
+    }
+
+    .primary em {
+      color: var(--cool);
+      font-style: normal;
+    }
+
+    .under {
+      max-width: 22rem;
+      margin: clamp(28px, 6vh, 56px) 0 0;
+      color: var(--muted);
+      font: 1rem/1.55 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    @media (max-width: 660px) {
+      main {
+        padding: 22px;
+      }
+
+      .loud-word {
+        top: 34px;
+        right: -170px;
+        font-size: clamp(6.2rem, 31vw, 9rem);
+      }
+
+      .copy {
+        min-height: calc(100vh - 44px);
+      }
+
+      .primary {
+        max-width: 9.8ch;
+        font-size: clamp(3rem, 15.6vw, 5.8rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="loud-word" aria-hidden="true">outcomes</p>
+    <section class="copy" aria-label="Outcomes first recognition">
+      <div>
+        <h1 class="primary">Most people try to change <em>outcomes</em> directly.</h1>
+        <p class="under">The visible result gets the attention first. The sentence names the habit.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 10 - Impact Seam</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --left: #b93f32;
+      --right: #113f36;
+      --ink: #fff4df;
+      --dark: #15100f;
+      --yellow: #f0b640;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--dark);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    main {
+      position: relative;
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, var(--left) 0 44%, var(--dark) 44% 46%, var(--right) 46% 100%);
+    }
+
+    .block {
+      position: absolute;
+      left: -22vw;
+      top: 18vh;
+      width: min(46vw, 520px);
+      height: 17vh;
+      min-height: 96px;
+      background: rgba(255, 244, 223, .9);
+      box-shadow: 0 18px 40px rgba(21, 16, 15, .28);
+      transform: translateX(0);
+      animation: hit 900ms cubic-bezier(.18, .8, .2, 1) forwards;
+    }
+
+    .block:nth-child(2) {
+      top: 41vh;
+      width: min(38vw, 450px);
+      animation-delay: 280ms;
+    }
+
+    .block:nth-child(3) {
+      top: 64vh;
+      width: min(52vw, 600px);
+      animation-delay: 560ms;
+    }
+
+    .block::after {
+      position: absolute;
+      right: 18px;
+      bottom: 16px;
+      color: var(--dark);
+      content: "outcome";
+      font: 700 .68rem/1 ui-sans-serif, system-ui, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .seam {
+      position: absolute;
+      inset: 0 auto 0 44%;
+      width: clamp(18px, 2vw, 30px);
+      background:
+        linear-gradient(180deg, transparent 0 10%, rgba(240, 182, 64, .95) 10% 11%, transparent 11% 36%, rgba(240, 182, 64, .95) 36% 37%, transparent 37% 68%, rgba(240, 182, 64, .95) 68% 69%, transparent 69%),
+        var(--dark);
+      box-shadow: 0 0 0 1px rgba(255, 244, 223, .12);
+    }
+
+    .primary-wrap {
+      position: absolute;
+      left: calc(44% + clamp(42px, 8vw, 118px));
+      top: 50%;
+      width: min(430px, 42vw);
+      opacity: 0;
+      transform: translateY(-42%) translateX(-16px);
+      animation: sentence-after-impact 1000ms cubic-bezier(.2, .8, .18, 1) 1350ms forwards;
+    }
+
+    .primary-wrap::before {
+      display: block;
+      margin-bottom: 18px;
+      color: var(--yellow);
+      content: "after the impact";
+      font: 700 .7rem/1.1 ui-sans-serif, system-ui, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .primary {
+      margin: 0;
+      font-size: clamp(1.8rem, 4.2vw, 3.6rem);
+      font-weight: 430;
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    @keyframes hit {
+      70% {
+        transform: translateX(calc(44vw + 2px));
+      }
+
+      100% {
+        transform: translateX(43vw);
+      }
+    }
+
+    @keyframes sentence-after-impact {
+      to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
+    }
+
+    @media (max-width: 660px) {
+      main {
+        background:
+          linear-gradient(90deg, var(--left) 0 34%, var(--dark) 34% 41%, var(--right) 41% 100%);
+      }
+
+      .block {
+        left: -44vw;
+        width: 70vw;
+        min-height: 72px;
+      }
+
+      .seam {
+        left: 34%;
+        width: 22px;
+      }
+
+      .primary-wrap {
+        left: calc(34% + 40px);
+        top: 50%;
+        width: min(210px, 52vw);
+      }
+
+      .primary {
+        font-size: clamp(1.6rem, 8vw, 2.3rem);
+      }
+
+      @keyframes hit {
+        70% {
+          transform: translateX(calc(34vw + 2px));
+        }
+
+        100% {
+          transform: translateX(33vw);
+        }
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .block,
+      .primary-wrap {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+
+      .block {
+        left: 18px;
+      }
+
+      .primary-wrap {
+        transform: translateY(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="block" aria-hidden="true"></div>
+    <div class="block" aria-hidden="true"></div>
+    <div class="block" aria-hidden="true"></div>
+    <div class="seam" aria-hidden="true"></div>
+    <section class="primary-wrap" aria-label="Pattern after direct impact">
+      <p class="primary">Most people try to change outcomes directly.</p>
+    </section>
+  </main>
+</body>
+</html>

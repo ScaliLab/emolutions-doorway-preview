@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 15 - Attention Draws In</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f8f1e7;
+      --ground: #0c1720;
+      --blue: #173f66;
+      --edge: rgba(248, 241, 231, .15);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--ground);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    main {
+      position: relative;
+      display: grid;
+      min-height: 100vh;
+      place-items: center;
+      padding: clamp(20px, 6vw, 82px);
+      isolation: isolate;
+    }
+
+    .escort {
+      position: fixed;
+      inset: -16vh -16vw;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 50% 49%, rgba(248, 241, 231, .18) 0 16%, transparent 37%),
+        radial-gradient(circle at 50% 49%, rgba(23, 63, 102, .96) 0 34%, transparent 68%),
+        linear-gradient(140deg, #071018, #173f66 64%, #071018);
+      transform: scale(1.28);
+      animation: draw-in 1900ms cubic-bezier(.2, .8, .18, 1) forwards;
+    }
+
+    .copy {
+      width: min(880px, 94vw);
+      text-align: center;
+    }
+
+    .primary {
+      margin: 0 auto;
+      max-width: 14ch;
+      font-size: clamp(3.1rem, 9.6vw, 9rem);
+      font-weight: 430;
+      line-height: .93;
+      letter-spacing: 0;
+      opacity: 0;
+      transform: scale(.985);
+      animation: line-clear 900ms ease 620ms forwards;
+    }
+
+    .pause {
+      width: min(26rem, 72vw);
+      height: 1px;
+      margin: clamp(32px, 6vh, 60px) auto 0;
+      background: var(--edge);
+      transform: scaleX(0);
+      animation: pause-line 900ms ease 1800ms forwards;
+    }
+
+    @keyframes draw-in {
+      to {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes line-clear {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pause-line {
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    @media (max-width: 640px) {
+      main {
+        place-items: center start;
+      }
+
+      .copy {
+        text-align: left;
+      }
+
+      .primary {
+        margin-left: 0;
+        max-width: 10ch;
+        font-size: clamp(3rem, 16.8vw, 6rem);
+      }
+
+      .pause {
+        margin-left: 0;
+      }
+
+      .escort {
+        background:
+          radial-gradient(circle at 26% 50%, rgba(248, 241, 231, .18) 0 17%, transparent 39%),
+          radial-gradient(circle at 28% 50%, rgba(23, 63, 102, .96) 0 34%, transparent 70%),
+          linear-gradient(140deg, #071018, #173f66 64%, #071018);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .escort,
+      .primary,
+      .pause {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="escort" aria-hidden="true"></div>
+    <section class="copy" aria-label="Attention drawn to the first line">
+      <h1 class="primary">Most people try to change outcomes directly.</h1>
+      <div class="pause" aria-hidden="true"></div>
+    </section>
+  </main>
+</body>
+</html>

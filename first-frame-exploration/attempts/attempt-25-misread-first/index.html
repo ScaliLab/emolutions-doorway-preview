@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 25 - Misread First</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #151514;
+      --muted: #625a52;
+      --ground: #f3ede3;
+      --shape: rgba(198, 98, 77, .34);
+      --line: rgba(21, 21, 20, .18);
+      --accent: #315f5a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--ground);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    .form {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .form::before {
+      position: absolute;
+      left: 8vw;
+      top: 24vh;
+      width: min(54vw, 620px);
+      height: min(30vh, 240px);
+      border-radius: 999px;
+      background: var(--shape);
+      content: "";
+      transform: skewX(-18deg) translateX(18vw);
+      transform-origin: center;
+      animation: form-reveals 2600ms cubic-bezier(.2, .8, .18, 1) 900ms forwards;
+    }
+
+    .form::after {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+      content: "";
+      transform: translateY(-50%) rotate(-7deg);
+      animation: axis 2600ms cubic-bezier(.2, .8, .18, 1) 900ms forwards;
+    }
+
+    main {
+      position: relative;
+      display: grid;
+      min-height: 100vh;
+      align-items: center;
+      padding: clamp(24px, 7vw, 92px);
+    }
+
+    .primary {
+      max-width: 12.2ch;
+      margin: 0;
+      font-size: clamp(3rem, 8.8vw, 8.8rem);
+      font-weight: 430;
+      line-height: .92;
+      letter-spacing: 0;
+    }
+
+    .bridge {
+      margin: clamp(28px, 5vh, 52px) 0 0;
+      color: var(--accent);
+      font: clamp(1.35rem, 3vw, 2.35rem)/1.12 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: bridge-in 900ms cubic-bezier(.2, .8, .18, 1) 2550ms forwards;
+    }
+
+    @keyframes form-reveals {
+      to {
+        transform: skewX(-18deg) translateX(0);
+      }
+    }
+
+    @keyframes axis {
+      to {
+        transform: translateY(-50%) rotate(0deg);
+      }
+    }
+
+    @keyframes bridge-in {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 660px) {
+      main {
+        padding: 24px;
+      }
+
+      .primary {
+        max-width: 9.8ch;
+        font-size: clamp(3rem, 15.6vw, 5.8rem);
+      }
+
+      .bridge {
+        font-size: clamp(1.25rem, 7vw, 1.8rem);
+      }
+
+      .form::before {
+        left: -22vw;
+        top: 21vh;
+        width: 86vw;
+        height: 20vh;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .form::before,
+      .form::after,
+      .bridge {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form" aria-hidden="true"></div>
+  <main aria-label="Misread first perceptual demonstration">
+    <section>
+      <h1 class="primary">Most people try to change outcomes directly.</h1>
+      <p class="bridge">Emolutions works upstream.</p>
+    </section>
+  </main>
+</body>
+</html>

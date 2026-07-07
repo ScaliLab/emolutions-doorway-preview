@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 16 - After The Pause</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #151514;
+      --ground: #f3ece1;
+      --rose: #cc6c61;
+      --deep: #25201d;
+      --quiet: rgba(21, 21, 20, .58);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, var(--deep) 0 10px, transparent 10px),
+        linear-gradient(180deg, var(--rose) 0 34%, var(--ground) 34%);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    main {
+      display: grid;
+      min-height: 100vh;
+      align-items: center;
+      padding: clamp(22px, 7vw, 92px);
+    }
+
+    .copy {
+      width: min(1000px, 100%);
+    }
+
+    .small {
+      margin: 0 0 clamp(28px, 7vh, 76px);
+      color: rgba(255, 247, 236, .86);
+      font: 1rem/1.5 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      opacity: 0;
+      animation: arrive 700ms ease 200ms forwards;
+    }
+
+    .primary {
+      max-width: 13.4ch;
+      margin: 0;
+      font-size: clamp(3.1rem, 9.8vw, 9.2rem);
+      font-weight: 430;
+      line-height: .92;
+      letter-spacing: 0;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: line 900ms cubic-bezier(.2, .8, .18, 1) 820ms forwards;
+    }
+
+    .after {
+      max-width: 20rem;
+      margin: clamp(32px, 6vh, 56px) 0 0;
+      color: var(--quiet);
+      font: 1.02rem/1.5 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      opacity: 0;
+      animation: arrive 850ms ease 2400ms forwards;
+    }
+
+    @keyframes arrive {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes line {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        background:
+          linear-gradient(90deg, var(--deep) 0 8px, transparent 8px),
+          linear-gradient(180deg, var(--rose) 0 28%, var(--ground) 28%);
+      }
+
+      main {
+        align-items: start;
+        padding: 78px 24px 24px;
+      }
+
+      .small {
+        margin-bottom: 70px;
+      }
+
+      .primary {
+        max-width: 9.8ch;
+        font-size: clamp(3rem, 16.2vw, 5.9rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .small,
+      .primary,
+      .after {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="copy" aria-label="First line after a human pause">
+      <p class="small">Before anything is explained:</p>
+      <h1 class="primary">Most people try to change outcomes directly.</h1>
+      <p class="after">That is enough to pause on.</p>
+    </section>
+  </main>
+</body>
+</html>

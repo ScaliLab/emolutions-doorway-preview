@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 24 - Practical Problem Door</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #151514;
+      --ground: #f6f2ea;
+      --panel: #ffffff;
+      --line: rgba(21, 21, 20, .15);
+      --accent: #315f5a;
+      --warm: #c86f4f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(49, 95, 90, .12) 0 18%, transparent 18%),
+        var(--ground);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    .grid {
+      position: fixed;
+      inset: clamp(18px, 4vw, 54px);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      border: 1px solid var(--line);
+      pointer-events: none;
+    }
+
+    .grid span {
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .24);
+      opacity: 0;
+      animation: cell 900ms ease forwards;
+    }
+
+    .grid span:nth-child(2) {
+      animation-delay: 120ms;
+    }
+
+    .grid span:nth-child(3) {
+      animation-delay: 240ms;
+    }
+
+    .grid span:nth-child(5) {
+      background: rgba(200, 111, 79, .1);
+      animation-delay: 360ms;
+    }
+
+    .grid span:nth-child(6) {
+      animation-delay: 480ms;
+    }
+
+    .grid span:nth-child(8) {
+      animation-delay: 600ms;
+    }
+
+    main {
+      position: relative;
+      display: grid;
+      min-height: 100vh;
+      align-items: center;
+      padding: clamp(24px, 7vw, 92px);
+    }
+
+    .primary {
+      max-width: 12.2ch;
+      margin: 0;
+      font-size: clamp(3rem, 8.7vw, 8.8rem);
+      font-weight: 430;
+      line-height: .92;
+      letter-spacing: 0;
+    }
+
+    .primary::after {
+      display: block;
+      width: min(14rem, 42vw);
+      height: 5px;
+      margin-top: clamp(24px, 5vh, 46px);
+      background: var(--accent);
+      content: "";
+      transform: scaleX(.22);
+      transform-origin: left;
+      animation: lens 1200ms cubic-bezier(.2, .8, .18, 1) 700ms forwards;
+    }
+
+    @keyframes cell {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes lens {
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    @media (max-width: 660px) {
+      .grid {
+        inset: 16px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+      }
+
+      main {
+        padding: 24px;
+      }
+
+      .primary {
+        max-width: 9.8ch;
+        font-size: clamp(3rem, 15.6vw, 5.8rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .grid span,
+      .primary::after {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <main aria-label="Practical problem door first frame">
+    <h1 class="primary">Most people try to change outcomes directly.</h1>
+  </main>
+</body>
+</html>

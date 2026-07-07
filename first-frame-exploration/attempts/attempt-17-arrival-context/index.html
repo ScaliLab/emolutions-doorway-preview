@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 17 - Arrival Context</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #161514;
+      --muted: #5f574f;
+      --ground: #efe5d4;
+      --panel: #fff9ee;
+      --line: rgba(22, 21, 20, .16);
+      --accent: #2f645b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--ground);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      display: grid;
+      min-height: 100vh;
+      grid-template-columns: minmax(260px, .95fr) minmax(420px, 1.4fr);
+    }
+
+    .arrival {
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(24px, 5vw, 72px);
+      border-right: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .arrival p {
+      max-width: 26rem;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+      line-height: 1.45;
+    }
+
+    .arrival .small {
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .line-area {
+      display: grid;
+      align-items: center;
+      padding: clamp(28px, 7vw, 96px);
+    }
+
+    .primary {
+      max-width: 12.6ch;
+      margin: 0;
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      font-size: clamp(3.2rem, 8.8vw, 9.4rem);
+      font-weight: 430;
+      line-height: .92;
+      letter-spacing: 0;
+    }
+
+    .under {
+      max-width: 22rem;
+      margin: clamp(30px, 6vh, 58px) 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 760px) {
+      body {
+        overflow: auto;
+      }
+
+      main {
+        min-height: 100vh;
+        grid-template-columns: 1fr;
+      }
+
+      .arrival {
+        min-height: 28vh;
+        padding: 24px;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .arrival p {
+        max-width: 20rem;
+      }
+
+      .line-area {
+        min-height: 72vh;
+        padding: 42px 24px;
+      }
+
+      .primary {
+        max-width: 9.8ch;
+        font-size: clamp(3rem, 15.8vw, 6rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="arrival" aria-label="Arrival context">
+      <p class="small">You are here now.</p>
+      <p>Maybe something kept asking for more effort, more correction, or one more try.</p>
+    </section>
+    <section class="line-area" aria-label="First recognition">
+      <div>
+        <h1 class="primary">Most people try to change outcomes directly.</h1>
+        <p class="under">This is the first thing to recognise, before anything is explained.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

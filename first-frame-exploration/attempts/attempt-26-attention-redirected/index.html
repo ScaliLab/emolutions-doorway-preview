@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 26 - Attention Redirected</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f7eddd;
+      --ground: #111417;
+      --hot: #d46346;
+      --cool: #67a98d;
+      --dim: rgba(247, 237, 221, .18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(circle at 76% 45%, rgba(212, 99, 70, .34), transparent 23%), var(--ground);
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    .pull,
+    .source {
+      position: fixed;
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    .pull {
+      right: clamp(24px, 8vw, 108px);
+      top: 42vh;
+      width: clamp(54px, 9vw, 112px);
+      height: clamp(54px, 9vw, 112px);
+      background: var(--hot);
+      box-shadow: 0 0 48px rgba(212, 99, 70, .42);
+      animation: pull-fades 1700ms ease 1500ms forwards;
+    }
+
+    .source {
+      left: clamp(22px, 8vw, 112px);
+      top: 23vh;
+      width: clamp(18px, 3vw, 38px);
+      height: clamp(18px, 3vw, 38px);
+      background: var(--cool);
+      box-shadow: 0 0 42px rgba(103, 169, 141, .48);
+      opacity: .18;
+      animation: source-appears 1200ms ease 1550ms forwards;
+    }
+
+    .path {
+      position: fixed;
+      left: clamp(38px, 10vw, 144px);
+      right: clamp(90px, 17vw, 220px);
+      top: 26vh;
+      height: 1px;
+      background: linear-gradient(90deg, var(--cool), transparent);
+      transform: scaleX(.08);
+      transform-origin: left;
+      opacity: 0;
+      animation: path-opens 1300ms cubic-bezier(.2, .8, .18, 1) 1850ms forwards;
+      pointer-events: none;
+    }
+
+    main {
+      position: relative;
+      display: grid;
+      min-height: 100vh;
+      align-items: center;
+      padding: clamp(24px, 7vw, 92px);
+    }
+
+    .primary {
+      max-width: 12.4ch;
+      margin: 0;
+      font-size: clamp(3rem, 8.9vw, 8.9rem);
+      font-weight: 430;
+      line-height: .92;
+      letter-spacing: 0;
+    }
+
+    .bridge {
+      margin: clamp(28px, 5vh, 52px) 0 0;
+      color: var(--cool);
+      font: clamp(1.35rem, 3vw, 2.35rem)/1.12 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      opacity: 0;
+      transform: translateX(-10px);
+      animation: bridge-in 900ms cubic-bezier(.2, .8, .18, 1) 2700ms forwards;
+    }
+
+    @keyframes pull-fades {
+      to {
+        opacity: .22;
+        transform: scale(.86);
+      }
+    }
+
+    @keyframes source-appears {
+      to {
+        opacity: 1;
+        transform: scale(1.22);
+      }
+    }
+
+    @keyframes path-opens {
+      to {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+
+    @keyframes bridge-in {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @media (max-width: 660px) {
+      main {
+        padding: 24px;
+      }
+
+      .primary {
+        max-width: 9.8ch;
+        font-size: clamp(3rem, 15.6vw, 5.8rem);
+      }
+
+      .bridge {
+        font-size: clamp(1.25rem, 7vw, 1.8rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pull,
+      .source,
+      .path,
+      .bridge {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="pull" aria-hidden="true"></div>
+  <div class="source" aria-hidden="true"></div>
+  <div class="path" aria-hidden="true"></div>
+  <main aria-label="Attention redirected perceptual demonstration">
+    <section>
+      <h1 class="primary">Most people try to change outcomes directly.</h1>
+      <p class="bridge">Emolutions works upstream.</p>
+    </section>
+  </main>
+</body>
+</html>

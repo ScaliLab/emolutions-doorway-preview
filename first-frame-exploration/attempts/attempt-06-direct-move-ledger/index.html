@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempt 06 - Direct Move Ledger</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f6f1e8;
+      --ink: #161514;
+      --muted: #776f64;
+      --rule: #cec5b7;
+      --accent: #8e5e49;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      display: grid;
+      min-height: 100vh;
+      align-items: center;
+      padding: clamp(18px, 5vw, 72px);
+    }
+
+    .ledger {
+      width: min(680px, 100%);
+      margin-left: clamp(0px, 7vw, 110px);
+      border-top: 1px solid var(--rule);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 3.2rem minmax(0, 1fr) 5.5rem;
+      gap: 18px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--rule);
+      opacity: 0;
+      transform: translateY(6px);
+      color: var(--muted);
+      font-size: clamp(.9rem, 1.9vw, 1.05rem);
+      line-height: 1.25;
+      animation: row-in 520ms ease forwards;
+    }
+
+    .row:nth-child(2) {
+      animation-delay: 260ms;
+    }
+
+    .row:nth-child(3) {
+      animation-delay: 520ms;
+    }
+
+    .row:nth-child(4) {
+      animation-delay: 780ms;
+    }
+
+    .row span:first-child,
+    .row span:last-child {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .row span:last-child {
+      justify-self: end;
+      color: rgba(142, 94, 73, .72);
+    }
+
+    .primary {
+      max-width: 30rem;
+      margin: clamp(34px, 8vh, 76px) 0 0;
+      opacity: 0;
+      color: var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      font-size: clamp(1.55rem, 3.5vw, 3rem);
+      font-weight: 430;
+      line-height: 1.08;
+      letter-spacing: 0;
+      animation: pattern-named 980ms cubic-bezier(.2, .8, .18, 1) 1550ms forwards;
+    }
+
+    @keyframes row-in {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pattern-named {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 660px) {
+      main {
+        align-items: start;
+        padding: 64px 20px 24px;
+      }
+
+      .ledger {
+        margin-left: 0;
+      }
+
+      .row {
+        grid-template-columns: 2.4rem minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .row span:last-child {
+        display: none;
+      }
+
+      .primary {
+        max-width: 17rem;
+        margin-top: 54px;
+        font-size: clamp(1.65rem, 8vw, 2.45rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .row,
+      .primary {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="ledger" aria-label="Direct moves becoming a pattern">
+      <div class="row"><span>01</span><span>Fix the visible result.</span><span>again</span></div>
+      <div class="row"><span>02</span><span>Push the decision harder.</span><span>again</span></div>
+      <div class="row"><span>03</span><span>Correct the behaviour at the end.</span><span>again</span></div>
+      <div class="row"><span>04</span><span>Try to make the outcome obey.</span><span>again</span></div>
+      <p class="primary">Most people try to change outcomes directly.</p>
+    </section>
+  </main>
+</body>
+</html>
