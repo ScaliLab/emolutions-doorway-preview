@@ -2,7 +2,7 @@
 
 Public-safe static preview exports for EMOLUTIONS doorway review.
 
-This repository intentionally contains only previewable HTML/CSS/JS material, not the private EMOLUTIONS research or working notes.
+This repository contains only previewable HTML/CSS/JS material, not the EMOLUTIONS research or working files.
 
 Current preview:
 
